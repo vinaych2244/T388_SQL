@@ -77,10 +77,30 @@ ALTER TABLE EMPLOYEE MODIFY FULLNAME VARCHAR(35);
 ALTER TABLE EMPLOYEE CHANGE COLUMN LOCATION ADDRESS VARCHAR(36);
 UPDATE EMPLOYEE SET ADDRESS="THANE";
 
-UPDATE EMPLOYEE SET TITLE="MR" WHERE GENDER = "MALE";
+UPDATE EMPLOYEE SET TITLE="Mr" WHERE GENDER = "MALE";
 
-UPDATE EMPLOYEE SET TITLE="MRs" WHERE GENDER = "FEMALE";
+UPDATE EMPLOYEE SET TITLE="Mrs" WHERE GENDER = "FEMALE";
 
 
 update employee set bonus =salary*0.05;
 
+select * from employee; 
+create table KISAN_INFO
+(ID INT unique NOT NULL,
+NAME VARCHAR(50) unique NOT NULL,
+age int check(age>=18),
+EMAIL_ID varchar(40) default "dummy@gmail.com"
+);
+desc KISAN_INFO;
+insert into kisan_info values
+(2003,"harshit",21,default);
+select* from kisan_info;
+alter table kisan_info modify age int check (age>=20);  
+create table KISAN_detail
+(main_ID int unique not null,
+ID INT primary key,
+NAME VARCHAR(50) unique NOT NULL,
+age int check(age>=18),
+EMAIL_ID varchar(40) default "dummy@gmail.com"
+);
+desc KIsan_detail;
