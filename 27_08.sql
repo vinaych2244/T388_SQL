@@ -40,7 +40,7 @@ INSERT INTO Employee values
 (1009, 'Pranaya Kumar', 'IT', 50000, 'Male', 28),
 (1010, 'Hina Sharma', 'HR', 75000, 'Female', 26);
 
-select * from employee; 
+select distinct age from employee; 
 
 CREATE TABLE Projects (
  ProjectId INT PRIMARY KEY AUTO_INCREMENT,
@@ -104,3 +104,60 @@ age int check(age>=18),
 EMAIL_ID varchar(40) default "dummy@gmail.com"
 );
 desc KIsan_detail;
+select distinct department from employee;
+select distinct gender  from employee;
+select * from employee 
+where department = "IT" or department = "finance";-- using or operator
+select * from employee
+where department in("IT","finance") ;-- in operator  
+
+create database pizza_sales_analysis;
+show databases;
+use pizza_sales_analysis;
+create table orders(
+id int,
+date date
+);
+alter table orders 
+add email varchar(35);
+alter table `order` rename to orders ;
+alter table orders modify id int primary key;
+desc orders;
+UPDATE orders SET Email = 'neha.gill@mail.com';
+select * from orders;
+create table table_name;
+
+DROP TABLE IF EXISTS table_name;
+insert into orders(id)
+values (1),(3);
+select * from employee where gender = "male" order by EmployeeId asc ;
+select * from employee limit 5;
+select department,count(Employeeid) from employee group by department;
+select department,avg(salary) from employee group by department;
+select department,avg(salary),count(Employeeid) from employee group by department;
+select department,avg(age),count(*) from employee group by department having avg(age) < 27;  
+select * from Projects;
+select now();
+truncate Projects;
+select *, datediff(enddate, startdate)as duration from Projects;
+select * from projects where datediff(enddate, startdate)= 45;
+alter table Projects add duration Int;
+insert into Projects (Duration) value datediff(enddate, startdate);
+select * from Projects;
+UPDATE Projects
+SET duration = DATEDIFF( EndDate,StartDate);
+select duration, count(*) from projects group by duration having count(*) >= 2;
+select duration, count(*) 
+from projects 
+where duration >= 20 
+group by duration 
+having count(*) >= 2
+order by duration desc
+limit 2
+;
+select * from employee limit 2,3;
+
+
+
+
+
