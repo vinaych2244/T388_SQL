@@ -156,6 +156,44 @@ order by duration desc
 limit 2
 ;
 select * from employee limit 2,3;
+select distinct age from employee;
+use t388_db;
+
+select * from projects where employeeid is null;
+
+-- Auto increment
+desc projects;
+update projects set employeeid = 1003 where projectid = 6;
+select * FROM PROJECTS;
+-- LOGICAL OPERATOR IN BETWEEN LIKE
+select * FROM EMPLOYEE WHERE EMPLOYEEID between 1003 AND 1070;-- BETWEEN BOTH HIGHER AND LOWER VALUE WILL BE THERE IN THE RESULT
+select * FROM EMPLOYEE WHERE EMPLOYEEID IN (1003,1005,1007,1070);-- IN OPERATOR 
+select * FROM EMPLOYEE WHERE FULLNAME LIKE "M%"; -- LIKE % N NUMBER OF CHARACTER IN START OR END 
+select * FROM EMPLOYEE WHERE FULLNAME LIKE "M___";-- LIKE _ ANY SINGLE CHARACTER like
+alter table `like` rename to simple;
+
+select * from simple where fullname like "a%";
+select * from simple where fullname like "_U%";
+select * from simple where fullname like "A%T";
+-- BUILT IN SQL FUNCTION
+-- 1 ) AGGREGATE FUNCTION 5
+select avg(SALARY) FROM EMPLOYEE;
+select sum(SALARY) FROM EMPLOYEE;
+select MAX(SALARY) FROM EMPLOYEE;
+select MIN(SALARY) FROM EMPLOYEE;
+select count(*) FROM EMPLOYEE;
+
+-- 2) MATH FUNCTION
+SELECT abs(+25); -- ABS REMOVE + OR - SIGN 
+SELECT mod(12,7); -- MOD() MODULUS WRITE THE REMAIDER FOR THE DIVISION
+SELECT ceil(33.8); -- RETURN HIGHER VALUE 
+SELECT floor(33.8); -- RETURN LOWER VALUE
+SELECT datediff(STARTDATE,ENDDATE) FROM PROJECTS;
+SELECT TRUNCATE(123456.13456211,-2);-- RETURN NO OF GIVEN NUMBER AFTER DECIMAL
+
+
+
+
 
 
 
