@@ -160,7 +160,6 @@ select distinct age from employee;
 use t388_db;
 
 select * from projects where employeeid is null;
-
 -- Auto increment
 desc projects;
 update projects set employeeid = 1003 where projectid = 6;
@@ -188,8 +187,35 @@ SELECT abs(+25); -- ABS REMOVE + OR - SIGN
 SELECT mod(12,7); -- MOD() MODULUS WRITE THE REMAIDER FOR THE DIVISION
 SELECT ceil(33.8); -- RETURN HIGHER VALUE 
 SELECT floor(33.8); -- RETURN LOWER VALUE
-SELECT datediff(STARTDATE,ENDDATE) FROM PROJECTS;
+SELECT abs(datediff(STARTDATE,ENDDATE)) FROM PROJECTS; -- abs remove sign + and - 
 SELECT TRUNCATE(123456.13456211,-2);-- RETURN NO OF GIVEN NUMBER AFTER DECIMAL
+
+select exp(3);-- e raise to value 
+select power(2,2);
+select sqrt(144);
+select *,sqrt(salary) from employee;
+
+-- string function
+select concat("good"," ","morning")as concatinate;
+select *,concat(fullname,"-",department) as code  from employee;
+alter table employee add email varchar(50);
+update employee set email = concat(fullname,"@gmail.com"); 
+select * from employee order by gender,department;
+select replace("Hello everyone, good morning","morning","night")as `replace`;-- replece
+select fullname,length(fullname)from employee;-- length of fullname
+select substring("maharashtra",5,3);-- return part of string from the given index and how many character required after that index
+select fullname,length(fullname) as actual_length,
+ltrim(fullname),length(ltrim(fullname)),
+rtrim(fullname),length(rtrim(fullname)),
+trim(fullname),length(trim(fullname)) from trimmer;
+
+-- sub queries
+
+select * from employee where age =(select age from employee where employeeid = 1002);
+
+select * from employee where department=(select department from employee where fullname = "john doe");
+select * from employee;
+
 
 
 
