@@ -215,9 +215,29 @@ select * from employee where age =(select age from employee where employeeid = 1
 
 select * from employee where department=(select department from employee where fullname = "john doe");
 select * from employee;
+select max(salary) from employee;
+select max(salary) from employee where salary < 
+(select max(salary) from employee) ;
 
+use t388_db;
 
+-- multiple row subquery
+select * from employee;
+select * from employee 
+where age in(select age from employee where employeeid in (1002,1003));
+select distinct salary from employee;
 
+-- any and all function
+select * from employee where 
+salary > any (select salary from employee where employeeid between 1001 and 1003);-- greater than minimum
+select * from employee where 
+salary < any (select salary from employee where employeeid between 1001 and 1003);-- less than maximum
+select * from employee where 
+salary > all (select salary from employee where employeeid between 1001 and 1003);-- greater than maximum
+select * from employee where 
+salary < all (select salary from employee where employeeid in (1005,1007));-- less than minimum
+
+select salary from employee where employeeid in (1005,1007);
 
 
 
