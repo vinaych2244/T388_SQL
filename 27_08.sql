@@ -239,6 +239,50 @@ salary < all (select salary from employee where employeeid in (1005,1007));-- le
 
 select salary from employee where employeeid in (1005,1007);
 
+-- joins
+use t388_db;
+
+-- inner join return the intersection data in the given two table
+select salary_t388.id, name, salary from name_t388 
+join
+salary_t388
+on salary_t388.id = name_t388.id ;
+
+-- left join 
+select * from salary_t388;
+select * from name_t388;
+select name_t388.id, name, salary 
+from name_t388 
+left join
+salary_t388
+on salary_t388.id = name_t388.id ;
+show tables;
+select database();
+alter table `salary_ t388` rename to salary_t388; 
+
+-- right join
+select name_t388.id, name, salary 
+from salary_t388 
+right join
+name_t388
+on salary_t388.id = name_t388.id ;
+use t388_db ;
+select * from name_t388;   
+select n.id as name_id,    s.id as salary_id, name ,salary
+from name_t388 as n 
+left join 
+salary_t388 as s 
+on s.Id = n.id 
+union
+select n.id as name_id,    s.id as salary_id, name ,salary
+from name_t388 as n 
+right join 
+salary_t388 as s 
+on s.Id = n.id
+
+
+
+
 
 
 
