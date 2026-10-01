@@ -278,7 +278,54 @@ select n.id as name_id,    s.id as salary_id, name ,salary
 from name_t388 as n 
 right join 
 salary_t388 as s 
-on s.Id = n.id
+on s.Id = n.id;
+use t388_db;
+select * from employee;
+-- WINDOWS FUNCTION
+-- 1)ROW NUMBER WINDOWS FUNCTION  
+select EmployeeId ,
+		Fullname,
+		department,
+        Salary,
+ROW_NUMBER() OVER (Partition BY salary) as rankInsalary from employee order by salary desc;
+-- 2)RANK SKIP NUMBER 
+select EmployeeId ,
+		Fullname,
+		department,
+        Salary,
+RANK() OVER (ORDER BY salary) as rankInsalary from employee ;
+-- DENSE RANK DOES'NT SKIP RANK 
+select EmployeeId ,
+		Fullname,
+		department,
+        Salary,
+DENSE_RANK() OVER (ORDER BY salary) as rankInsalary from employee ;
+
+-- AGGRREGATE WINDOW FUNTION
+-- 1) SUM 2) AVG
+select EmployeeId ,
+		Fullname,
+		department,
+        Salary,
+AVG(SALARY) OVER (PARTITION BY DEPARTMENT) as DEPARTMENT_AVG_SALARY,
+SUM(SALARY) OVER (PARTITION BY DEPARTMENT) as DEPARTMENT_SUM_SALARY  
+from employee 
+ORDER BY DEPARTMENT , SALARY DESC;
+
+-- LAG FUNCTION
+select EmployeeId ,
+		Fullname,
+		department,
+        AGE,
+        Salary,
+LAG(SALARY,1,0) OVER (PARTITION BY DEPARTMENT   ORDER BY  AGE ASC) AS PREVIOUS_EMPLOYEEE_SALARY_BY_AGE,
+SALARY-"PREVIOUS_EMPLOYEEE_SALARY_BY_AGE"  
+from employee 
+ORDER BY DEPARTMENT ,AGE ASC;
+
+
+
+
 
 
 
